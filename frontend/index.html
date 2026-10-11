@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research Opportunity Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <div>
+      <h1>Research Opportunity Portal</h1>
+      <p>One place to post, find and manage university research openings.</p>
+    </div>
+    <button class="btn primary" id="newBtn">+ Post opportunity</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="stats" id="stats"></section>
+  <div class="toolbar">
+    <input type="search" id="search" placeholder="Search by title, area, faculty or skill">
+    <select id="filter">
+      <option value="All">All statuses</option>
+      <option value="Open">Open</option>
+      <option value="Closed">Closed</option>
+    </select>
+  </div>
+  <section class="grid" id="grid"></section>
+</main>
+
+<!-- Details modal -->
+<div class="overlay" id="detailModal"><div class="modal" id="detailBody"></div></div>
+
+<!-- Form modal -->
+<div class="overlay" id="formModal">
+  <div class="modal">
+    <h2 id="formTitle">Post opportunity</h2>
+    <form id="form" novalidate>
+      <input type="hidden" id="oid">
+      <label>Research title<input id="title" maxlength="200"><small class="err"></small></label>
+      <label>Description<textarea id="description" rows="3"></textarea><small class="err"></small></label>
+      <div class="row">
+        <label>Research area<input id="research_area"><small class="err"></small></label>
+        <label>Department<input id="department"><small class="err"></small></label>
+      </div>
+      <div class="row">
+        <label>Faculty member<input id="faculty_name"><small class="err"></small></label>
+        <label>Required skills<input id="required_skills" placeholder="Python, SQL, ..."><small class="err"></small></label>
+      </div>
+      <div class="row three">
+        <label>Positions<input type="number" id="positions" min="1" value="1"><small class="err"></small></label>
+        <label>Deadline<input type="date" id="deadline"><small class="err"></small></label>
+        <label>Status<select id="status"><option>Open</option><option>Closed</option></select><small class="err"></small></label>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn ghost" data-close>Cancel</button>
+        <button type="submit" class="btn primary" id="saveBtn">Save opportunity</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Delete confirm -->
+<div class="overlay" id="confirmModal">
+  <div class="modal small">
+    <h2>Delete this opportunity?</h2>
+    <p id="confirmText"></p>
+    <div class="actions">
+      <button class="btn ghost" data-close>Keep it</button>
+      <button class="btn danger" id="confirmDelete">Delete opportunity</button>
+    </div>
+  </div>
+</div>
+
+<div id="toasts"></div>
+<script src="app.js"></script>
+</body>
+</html>
